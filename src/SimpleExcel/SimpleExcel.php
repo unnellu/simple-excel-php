@@ -40,7 +40,7 @@ use SimpleExcel\Exception\SimpleExcelException;
 if (!class_exists('Composer\\Autoload\\ClassLoader', false)){
     // autoload all interfaces & classes
     spl_autoload_register(function($class_name){
-        if($class_name != 'SimpleExcel') require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.str_replace('\\', DIRECTORY_SEPARATOR, substr($class_name, strlen('SimpleExcel\\'))).'.php');
+        if(preg_match('/SimpleExcel/is', $class_name )) require_once(dirname(__FILE__).DIRECTORY_SEPARATOR.str_replace('\\', DIRECTORY_SEPARATOR, substr($class_name, strlen('SimpleExcel\\'))).'.php');
     });
 }
 
